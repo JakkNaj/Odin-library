@@ -9,6 +9,38 @@
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
+    <header>
+        <h1>Library</h1>
+        <button>Add Book</button>
+    </header>
+    <main>
+        <div id="bookShelf">
+            <div class="bookCard legend">
+                <h4 class="bookTitle">Title</h4>
+                <div class="bookAuthor">Author</div>
+                <div class="pagesNum">Number of pages</div>
+                <div class="buttonLegend">Already read?</div>
+                <div class="buttonLegend">Remove book!</div>
+            </div>
+        </div>
+    </main>
+    <div id="popup-form" style="display:none">
+        <form>
+            <label for="formTitle">Title</label>
+            <input id="formTitle" type="text" name="title"><br><br>
+            <label for="formAuthor">Author</label>
+            <input id="formAuthor" type="text" name="author"><br><br>
+            <label for="formPages">Pages</label>
+            <input id="formPages" type="number" name="pages"><br><br>
+            <label for="formRead">Did you read the book?</label>
+            <input id="formRead" type="checkbox" name="read"><br><br>
+            <div class="formBtns-wrapper">
+                <button id="cancel-popup-form">Cancel</button>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
