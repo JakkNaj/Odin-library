@@ -17,7 +17,7 @@ function Book(title, author, pages, read) {
 }
 
 function addBookToLibrary(title, author, pages, read){
-    myLibrary.forEach( (elem, index) => {
+    myLibrary.forEach( (elem) => {
         if (elem.title === title) {
             console.log("Book already exists");
             return false;
@@ -25,6 +25,18 @@ function addBookToLibrary(title, author, pages, read){
     })
     myLibrary.push(new Book(title, author, pages, read));
     return true;
+}
+
+function removeBookFromLibrary(title) {
+    let iterator = 0
+    for(let elem of myLibrary) {
+        if (elem.title === title) {
+            myLibrary.splice(iterator, 1);
+            return true;
+        }
+        iterator++;
+    }
+    return false;
 }
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 257, false);
@@ -52,7 +64,7 @@ PopUpForm.addEventListener("submit", function(e) {
     addBookToLibrary(formTitle, formAuthor, formPages, formRead)
     e.preventDefault();
     PopUpForm.style.display = "none";
-    displayBooks();
+    createBookCard(myLibrary[myLibrary.length - 1])
 });
 
 
@@ -79,6 +91,24 @@ const createBookCard = (book) => {
     pages.textContent = `${book.pages}`;
     readBtn.textContent = book.read ? "read" : "not read";
     removeBtn.textContent = "remove";
+
+    //add event listeners to buttons
+    removeBtn.addEventListener("click", ()=>{
+        let sibling = removeBtn.previousSibling;
+        while (!sibling.classList.contains("bookTitle")) {
+            sibling = sibling.previousSibling;
+            if (!sibling){
+                console.log("well.. fck")
+                return false;
+            }
+        }
+        const bookShelf = document.getElementById("bookShelf");
+        myLibrary.forEach( () => {
+            bookShelf.removeChild(bookShelf.lastChild)
+        })
+        removeBookFromLibrary(sibling.textContent);
+        displayBooks();
+    })
 
     //make structure of HTML document
     bookCard.appendChild(title);
