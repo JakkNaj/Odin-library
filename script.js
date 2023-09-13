@@ -84,6 +84,11 @@ const createBookCard = (book) => {
     pages.classList.add("pagesNum");
     readBtn.classList.add("readBtn");
     removeBtn.classList.add("removeBtn");
+    if( book.read ){
+        readBtn.classList.add("read")
+    } else {
+        readBtn.classList.add("notRead")
+    }
 
     //add textContent
     title.textContent = `${book.title}`;
@@ -97,10 +102,6 @@ const createBookCard = (book) => {
         let sibling = removeBtn.previousSibling;
         while (!sibling.classList.contains("bookTitle")) {
             sibling = sibling.previousSibling;
-            if (!sibling){
-                console.log("well.. fck")
-                return false;
-            }
         }
         const bookShelf = document.getElementById("bookShelf");
         myLibrary.forEach( () => {
@@ -108,6 +109,29 @@ const createBookCard = (book) => {
         })
         removeBookFromLibrary(sibling.textContent);
         displayBooks();
+    })
+    readBtn.addEventListener("click", ()=> {
+        let sibling = removeBtn.previousSibling;
+        while (!sibling.classList.contains("bookTitle")) {
+            sibling = sibling.previousSibling;
+        }
+        let iterator = 0
+        for(let elem of myLibrary) {
+            if (elem.title === sibling.innerHTML) {
+                break;
+            }
+            iterator++;
+        }
+        console.log("it" + iterator);
+        if (myLibrary[iterator].read) {
+            readBtn.classList.add("notRead");
+            readBtn.classList.remove("read");
+        } else {
+            readBtn.classList.add("read");
+            readBtn.classList.remove("notRead");
+        }
+        myLibrary[iterator].read = !myLibrary[iterator].read;
+
     })
 
     //make structure of HTML document
