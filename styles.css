@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Roboto+Mono&display=swap');
+
 body {
+    font-family: 'Roboto Mono', monospace;
     padding: 40px;
+    margin: 0;
 }
 
 header {
@@ -8,8 +12,11 @@ header {
 }
 
 header>button {
-    height: 20px;
+    padding: 10px 20px 10px;
     align-self: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: cornflowerblue;
 }
 
 #bookShelf {
@@ -20,7 +27,7 @@ header>button {
 
 .bookCard {
     display: grid;
-    grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1.2fr 1fr;
 }
 
 .bookTitle {
@@ -30,6 +37,12 @@ header>button {
 .bookCard >button, .buttonLegend {
     width: 60%;
     justify-self: end;
+}
+
+.bookCard >button {
+    border: 1px solid black;
+    border-radius: 4px;
+    max-height: 22px;
 }
 
 #bookShelf >.legend{
@@ -56,6 +69,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
 input[type="text"],
@@ -63,7 +77,6 @@ input[type="number"],
 input[type="checkbox"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
 }
 
 .formBtns-wrapper {
@@ -76,5 +89,37 @@ input[type="checkbox"] {
 }
 
 .notRead {
-    background-color: darkred;
+    background-color: indianred;
+}
+
+main >#bookShelf >.legend{
+    padding-top: 20px;
+}
+
+button {
+    font-family: 'Roboto Mono', monospace;
+}
+
+button:hover {
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+}
+
+.pagesNum {
+    justify-self: center;
+}
+
+.buttonLegend {
+    justify-self: end;
+}
+
+.checkbox-wrapper {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.formBtns-wrapper >* {
+    border-radius: 4px;
+    border: 1px solid grey;
+    background-color: darkgray;
 }

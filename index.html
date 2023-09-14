@@ -27,15 +27,17 @@
     <div id="popup-form" style="display:none">
         <form>
             <label for="formTitle">Title</label>
-            <input id="formTitle" type="text" name="title"><br><br>
+            <input id="formTitle" type="text" name="title">
             <label for="formAuthor">Author</label>
-            <input id="formAuthor" type="text" name="author"><br><br>
+            <input id="formAuthor" type="text" name="author">
             <label for="formPages">Pages</label>
-            <input id="formPages" type="number" name="pages"><br><br>
-            <label for="formRead">Did you read the book?</label>
-            <input id="formRead" type="checkbox" name="read"><br><br>
+            <input id="formPages" type="number" name="pages">
+            <div class="checkbox-wrapper">
+                <label for="formRead">Did you read the book?</label>
+                <input id="formRead" type="checkbox" name="read">
+            </div>
             <div class="formBtns-wrapper">
-                <button id="cancel-popup-form">Cancel</button>
+                <button id="cancel-popup-form" type="button">Cancel</button>
                 <input type="submit" value="Submit">
             </div>
         </form>

@@ -122,13 +122,14 @@ const createBookCard = (book) => {
             }
             iterator++;
         }
-        console.log("it" + iterator);
         if (myLibrary[iterator].read) {
             readBtn.classList.add("notRead");
             readBtn.classList.remove("read");
+            readBtn.textContent = "not read";
         } else {
             readBtn.classList.add("read");
             readBtn.classList.remove("notRead");
+            readBtn.textContent = "read";
         }
         myLibrary[iterator].read = !myLibrary[iterator].read;
 
